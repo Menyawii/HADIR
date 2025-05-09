@@ -1,0 +1,30 @@
+2025-05-04 16:30:44,760 - ERROR - Init failed: name 'os' is not defined
+2025-05-04 16:30:44,760 - ERROR - System error: name 'SystemInitializationError' is not defined
+2025-05-04 16:35:55,277 - ERROR - Init failed: name 'os' is not defined
+2025-05-04 16:35:55,279 - ERROR - System error: name 'os' is not defined
+2025-05-04 16:41:34,259 - INFO - Session created: session_20250504_164134_22
+2025-05-04 16:42:08,288 - ERROR - Verification process error: 'message'
+2025-05-04 16:42:08,288 - ERROR - Operation error: 'message'
+2025-05-06 20:05:48,139 - INFO - Session created: session_20250506_200548_322
+2025-05-06 20:06:22,249 - ERROR - Verification process error: 'message'
+2025-05-06 20:06:22,250 - ERROR - Operation error: 'message'
+2025-05-06 20:06:56,789 - ERROR - Verification process error: 'message'
+2025-05-06 20:06:56,789 - ERROR - Operation error: 'message'
+2025-05-06 20:21:29,900 - INFO - Session created: session_20250506_202129_222
+2025-05-06 20:22:08,593 - ERROR - Verification process error: 'message'
+2025-05-06 20:22:08,593 - ERROR - Operation error: 'message'
+2025-05-06 20:22:49,555 - ERROR - Verification process error: 'message'
+2025-05-06 20:22:49,556 - ERROR - Operation error: 'message'
+2025-05-06 20:23:27,689 - ERROR - Verification process error: 'message'
+2025-05-06 20:23:27,699 - ERROR - Operation error: 'message'
+2025-05-06 20:29:02,630 - INFO - Session created: session_20250506_202902_3232
+2025-05-06 20:29:48,412 - ERROR - Verification process error: 'message'
+2025-05-06 20:29:48,412 - ERROR - Operation error: 'message'
+2025-05-09 18:46:09,972 - INFO - Session created: session_20250509_184609_3232
+2025-05-09 19:17:35,034 - INFO - Session created: session_20250509_191735_43343
+2025-05-09 19:30:15,783 - INFO - Session created: session_20250509_193015_323
+2025-05-09 19:31:51,865 - INFO - Session created: session_20250509_193151_34
+2025-05-09 19:33:33,073 - INFO - Session created: session_20250509_193333_erwr
+2025-05-09 19:33:57,685 - INFO - Session created: session_20250509_193357_ef
+2025-05-09 19:36:18,498 - INFO - Session created: session_20250509_193618_re
+2025-05-09 19:40:02,553 - INFO - Session created: session_20250509_194002_fed
