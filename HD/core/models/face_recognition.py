@@ -234,3 +234,72 @@ class FaceRecognitionSystem:
     def get_performance_metrics(self) -> Dict:
         """Get current performance metrics"""
         return {**self.metrics, "cached": len(self.stored_images)}
+    def verify_student_images(self, stored_image: np.ndarray, 
+                            captured_image: np.ndarray) -> Dict:
+        """Compare two face images directly and return similarity"""
+        try:
+            # Preprocess both images
+            stored_processed = self.image_preprocessor.preprocess_image(stored_image)
+            captured_processed = self.image_preprocessor.preprocess_image(captured_image)
+            
+            if stored_processed is None or captured_processed is None:
+                return {
+                    "success": False,
+                    "confidence_score": 0.0,
+                    "message": "Failed to preprocess one or both images"
+                }
+                
+            # Save temporary files
+            temp_stored = f"temp_stored_{int(time.time())}.jpg"
+            temp_captured = f"temp_captured_{int(time.time())}.jpg"
+            
+            cv2.imwrite(temp_stored, (stored_processed * 255).astype(np.uint8))
+            cv2.imwrite(temp_captured, (captured_processed * 255).astype(np.uint8))
+            
+            try:
+                # Get representations
+                stored_repr = DeepFace.represent(
+                    img_path=temp_stored,
+                    model_name="Facenet",
+                    enforce_detection=True
+                )
+                
+                captured_repr = DeepFace.represent(
+                    img_path=temp_captured,
+                    model_name="Facenet",
+                    enforce_detection=True
+                )
+                
+                # Compare representations
+                if stored_repr and captured_repr:
+                    a = np.array(stored_repr[0]["embedding"])
+                    b = np.array(captured_repr[0]["embedding"])
+                    
+                    similarity = np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b) + 1e-10)
+                    distance = 1.0 - similarity
+                    
+                    return {
+                        "success": distance <= Config.FACE_RECOGNITION_THRESHOLD,
+                        "confidence_score": similarity,
+                        "distance": distance
+                    }
+                else:
+                    return {
+                        "success": False,
+                        "confidence_score": 0.0,
+                        "message": "Failed to generate representations"
+                    }
+                    
+            finally:
+                # Clean up temporary files
+                for temp_file in [temp_stored, temp_captured]:
+                    if os.path.exists(temp_file):
+                        os.remove(temp_file)
+                        
+        except Exception as e:
+            logging.error(f"Error comparing images: {str(e)}")
+            return {
+                "success": False,
+                "confidence_score": 0.0,
+                "message": str(e)
+            }
