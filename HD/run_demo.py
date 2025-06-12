@@ -3,11 +3,14 @@ import sys
 import os
 import asyncio
 
-# Get the absolute path of the project root directory
-project_root = os.path.dirname(os.path.abspath(r"c:/Users/ymeny/Desktop/HADER/HD"))
+# Fix the path resolution
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(current_dir)  
+hd_path = os.path.join(project_root, "HD")
 
-# Add the project root to the Python path
+# Add both paths to ensure imports work
 sys.path.insert(0, project_root)
+sys.path.insert(0, hd_path)
 
 # Suppress TensorFlow warnings
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -24,4 +27,4 @@ def main():
         sys.exit(1)
 
 if __name__ == "__main__":
-    main();
+    main()
