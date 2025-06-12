@@ -6,7 +6,7 @@ class Config:
     """System configuration settings"""
     # Face Recognition Settings
     FACE_DETECTION_CONFIDENCE = 0.9
-    FACE_RECOGNITION_THRESHOLD = 0.6
+    FACE_RECOGNITION_THRESHOLD = 0.4
     IMAGE_SIZE = (224, 224)
     
     # Image Storage Paths
